@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/form_rec.css' %}">
+    </head>
+<body>
+    <a class="navbar-brand" shref="#!" style="display: flex; align-items: center;">
+        <img src="{% static 'media/logo/IMG_0514.png' %}" alt="UMG Logo" style="width: 300px; height: auto;">
+       </a>
+<div id="contact-form">
+	<div>
+		<h1>Bienvenido/a</h1> 
+		<h4>Llena el formulario con lo que se solicita</h4> 
+	</div>
+     <form method="post">
+        {% csrf_token %}
+        <div>
+          <label for="{{ form.marca.id_for_label }}">Marca:</label>
+          {{ form.marca }}
+        </div>
+        <div>
+          <label for="{{ form.tipo_de_piel.id_for_label }}">Tipo de Piel:</label>
+          {{ form.tipo_de_piel }}
+        </div>
+        <div>
+          <label for="{{ form.problemas_piel.id_for_label }}">Problemas de Piel:</label>
+          {{ form.problemas_piel }}
+        </div>
+        <button type="submit">Enviar formulario</button>
+      </form>
+			</div>
+		   </form>
+
+	</div>
+</body>
+</html>

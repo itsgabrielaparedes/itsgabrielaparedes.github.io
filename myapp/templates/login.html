@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+    </head>
+<body>
+    <div class="cotn_principal">
+        <div class="cont_centrar">
+            
+          <div class="cont_login">
+        <div class="cont_info_log_sign_up">
+              <div class="col_md_login">
+        <div class="cont_ba_opcitiy">
+                
+                <h2>LOGIN</h2>  
+          <p>Inicia sesión</p> 
+          <button class="btn_login" onclick="change_to_login()">LOGIN</button>
+          </div>
+          </div>
+        <div class="col_md_sign_up">
+        <div class="cont_ba_opcitiy">
+          <h2>SIGN UP</h2>
+        
+          
+          <p>Regístrate</p>
+        
+          <button class="btn_sign_up" onclick="change_to_sign_up()">SIGN UP</button>
+        </div>
+          </div>
+               </div>
+        
+            
+            <div class="cont_back_info">
+               <div class="cont_img_back_grey">
+               <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+               </div>
+               
+            </div>
+        <div class="cont_forms" >
+            <div class="cont_img_back_">
+               <img src="https://images.unsplash.com/42/U7Fc1sy5SCUDIu4tlJY3_NY_by_PhilippHenzler_philmotion.de.jpg?ixlib=rb-0.3.5&q=50&fm=jpg&crop=entropy&s=7686972873678f32efaf2cd79671673d" alt="" />
+               </div>
+               <div class="cont_form_login">
+                <a href="#" onclick="hidden_login_and_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+                <h2>LOGIN</h2>
+                    <input type="text" name="username" placeholder="Email" />
+                    <input type="password" name="password" placeholder="Password" />
+                    <button type="submit" onclick="location.href='http://127.0.0.1:8000/website'" class="btn_login">Iniciar sesión</button>
+            </div>
+        
+            <script>
+                // JavaScript para redirigir a la página después del inicio de sesión
+                document.querySelector(".cont_form_login form").addEventListener("submit", function (event) {
+                    event.preventDefault();  // Evitar que el formulario se envíe automáticamente
+                    // Realizar la redirección después del inicio de sesión
+                    window.location.href = "http://127.0.0.1:8000/website";
+                });
+            </script>
+          
+          <form method="post" action="{% url 'registro_iniciar_sesion' %}">
+            {% csrf_token %}
+            <div class="cont_form_sign_up">
+                <a href="#" onclick="hidden_login_and_sign_up()"><i class="material-icons">&#xE5C4;</i></a>
+                <h2>SIGN UP</h2>
+                <input type="text" name="email" placeholder="Email" />
+                <input type="text" name="full_name" placeholder="Nombre y apellido" />
+                <input type="password" name="password1" placeholder="Contraseña" />
+                <input type="password" name="password2" placeholder="Confirmar contraseña" />
+                <button type="submit" class="btn_sign_up">Registrar</button>
+            </div>
+        </form>
+        
+        {% if success_message %}
+        <div class="alert alert-success">
+        {{ success_message }}
+        </div>
+        {% endif %}
+            </div>
+            
+          </div>
+         </div>
+        </div>
+    <script src="{% static '/js/login.js' %}"></script>
+</body>
+  </html>
